@@ -1,0 +1,24 @@
+---
+title: "A plot and a date"
+author: "Claudiu Forgaci"
+date: "2023-07-25"
+output: html_document
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(plotly)
+```
+
+This barplot shows 10 countries with randomly generated GDP values.
+
+```{r pressure, echo=FALSE, message=FALSE}
+set.seed(2023)
+continents <- sample(c("Africa", "Asia", "Europe", "North America", "South America"), 10, replace = TRUE)
+gdp <- runif(10, min = 100, max = 3000) |> round(2)
+
+countries_df <- data.frame(continent = continents, gdp = gdp)
+
+countries_df |> 
+  plot_ly(x = continents, y = gdp) 
+  
+```
